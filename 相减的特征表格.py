@@ -51,10 +51,12 @@ class DataFrame:
 
 
 
-feature_c = DataFrame(r"E:\EGFR TKI\feature_subtraction\feature\feature_C.csv")
-feature_ce = DataFrame(r"E:\EGFR TKI\feature_subtraction\feature\feature_CE.csv")
-feature_c_array = feature_c.get_array()
-feature_ce_array = feature_ce.get_array()
-feature_c_ce = feature_c_array - feature_ce_array
-pd_c_ce = pd.DataFrame(data=feature_c_ce, index=feature_c.get_new_case_name(), columns=feature_c.get_feature_name())
-pd_c_ce.to_csv(r"E:\EGFR TKI\feature_subtraction\sub_feature\c_ce.csv")
+feature_1 = DataFrame(r"\feature_C.csv")
+feature_2 = DataFrame(r"\feature_CE.csv")
+feature_1_array = feature_c.get_array()
+feature_2_array = feature_ce.get_array()
+
+feature_array = feature_1_array - feature_2_array  # 此处可以有各种矩阵操作，注意维度匹配即可
+
+pd_c_ce = pd.DataFrame(data=feature_array, index=feature_1.get_new_case_name(), columns=feature_1.get_feature_name())
+pd_c_ce.to_csv(r"\sub_feature\c_ce.csv")
